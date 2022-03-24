@@ -20,6 +20,18 @@ handleChange = (e) => {
 	}
 };
 
+handleSubmit = (e) => {     
+  e.preventDefault();
+  const temobj = {        
+    name: this.state.name,
+  };
+ 
+  const tempArr = this.state.name;
+  tempArr.push(temobj);
+  this.setState({ name: tempArr });
+};
+
+
 render() {
 	return (
 	<div >
@@ -28,19 +40,23 @@ render() {
 		<InputFild name="field-2" length="4" handleChange={this.handleChange} />| |
 		<InputFild name="field-3" length="4" handleChange={this.handleChange} />| |
 		<InputFild name="field-3" length="4" handleChange={this.handleChange} />|
+    <button onSubmit={this.handleSubmit}>Submit</button>
+
+
     </div>
+          
 	);
 }
 }
 class InputFild extends Component {
 render() {
 	return (
-	<input
-		type="text"
+	<input type="text" required
 		name={this.props.name}
 		maxLength={this.props.length}
 		onChange={this.props.handleChange}
 	></input>
+  
 	);
 }
 }
